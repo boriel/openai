@@ -1,4 +1,4 @@
-#(GAMMA * prev)!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # vim:ts=4:et:ai:
 
