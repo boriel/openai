@@ -12,7 +12,7 @@ import time
 
 
 LENGTH = 4  # Observation length
-MAX_WIN_STEPS = 200
+MAX_WIN_STEPS = 100
 WIN_THRESHOLD = 195
 MU = 0
 TRIES = 1
@@ -24,9 +24,10 @@ EPS = 0.001
 N = 2
 T1 = 1.0 / math.sqrt(2 * N)
 T2 = 1.0 / math.sqrt(2 / math.sqrt(N))
-ALPHA = 0.6
+ALPHA = 1
 GAMMA = 1.0
 MONITOR = True
+EXPERIMENT = './tmp/cartpole-experiment-7'
 
 perturb_sigma = np.vectorize(lambda x: x * math.e ** (T1 * random.gauss(0, 1) +
                                                       T2 * random.gauss(0, 1)))
@@ -101,7 +102,7 @@ class Individual:
 
 if __name__ == '__main__':
     if MONITOR:
-        ENV.monitor.start('./tmp/cartpole-experiment-3')
+        ENV.monitor.start(EXPERIMENT, force=True)
 
     best = Individual(tries=TRIES, render=RENDER)
     nn_f = best_f = best.fitness
